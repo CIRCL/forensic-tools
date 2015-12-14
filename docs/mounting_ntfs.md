@@ -23,7 +23,7 @@ The output of the fdisk command show us that the partition start at sector 2048.
 
 # Mounting the partition
 
-No we know the offset and mount the partition. The syntax is: 'sudo mount -o options <imagefile> <mountpoint>'. You need to have root rights to mount, so you need sudo.
+No we know the offset and mount the partition. The syntax is: `sudo mount -o options <imagefile> <mountpoint>`. You need to have root rights to mount, so you need sudo.
 
 The image should be mounted for forensic investigations. There are some useful options which are explained below. The command to mound should look like:
 
