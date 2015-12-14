@@ -1,0 +1,57 @@
+# 
+# How to mount an NTFS partition for forensic investigations.
+# 
+
+
+
+
+$ fdisk -l imagefile.dd
+
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+      Device Boot      Start         End      Blocks   Id  System
+imagefile.dd            2048  3907029167  1953513560    7  HPFS/NTFS/exFAT
+
+
+
+$ sudo mount -o ro,loop,noexec,offset=$((512*2048)),show_sys_files,streams_interface=windows imagefile.dd /mnt/
+
+
+Explanation of the options:
+
+ro
+	Open the image in read only mode to prevent modification of the evidence.
+
+loop
+	Mount image as loopback device.
+
+noexec
+	Prevent execution of binaries from the image to prevent infection of the forensic workstation.
+
+offset
+	Offset where the partition starts, in bytes. Easy to calculate for the shell. just use the fdusk output.
+
+show_sys_files
+	Provides access to file system meta data. New files which are not accessible without this options are for example:
+	- $AttrDef
+	- $Boot
+	- $BadClus
+	- $Extend
+	- $LogFile
+	- $UpCase
+	- $MFTMirr
+	- $Secure
+	- $Bitmap
+	- $Volume
+
+treams_interface=windows
+	Privides access to NTFS named data streams. Provides information which was not accessible before like:
+	$ cat /Users/<username>/Downloads/Dropbox.exe:Zone.Identifier
+	[ZoneTransfer]
+	ZoneId=3
+
+
+
+
+
