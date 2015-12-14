@@ -23,7 +23,7 @@ The output of the fdisk command show us that the partition start at sector 2048.
 
 # Mounting the partition
 
-No we know the offset and mount the partition. The syntax is: sudo mount -o options <imagefile> <mountpoint>. You need to have root rights to mount, so you need sudo.
+No we know the offset and mount the partition. The syntax is: 'sudo mount -o options <imagefile> <mountpoint>'. You need to have root rights to mount, so you need sudo.
 
 The image should be mounted for forensic investigations. There are some useful options which are explained below. The command to mound should look like:
 
@@ -35,20 +35,20 @@ $ sudo mount -o ro,loop,noexec,offset=$((512*2048)),show_sys_files,streams_inter
 
 ## Explanation of the options
 
-ro
-	Open the image in read only mode to prevent modification of the evidence.
+**ro**  
+    Open the image in read only mode to prevent modification of the evidence.
 
-loop
-	Mount image as loopback device.
+**loop**  
+    Mount image as loopback device.
 
-noexec
-	Prevent execution of binaries from the image to prevent infection of the forensic workstation.
+**noexec**  
+    Prevent execution of binaries from the image to prevent infection of the forensic workstation.
 
-offset
-	Offset where the partition starts, in bytes. Easy to calculate for the shell. Just use the fdisk output.
+**offset**  
+    Offset where the partition starts, in bytes. Easy to calculate for the shell. Just use the fdisk output.
 
-show_sys_files
-	Provides access to file system meta data. New files which are not accessible without this options are for example:
+**show_sys_files**  
+    Provides access to file system meta data. New files which are not accessible without this options are for example:
 <pre>
 	- $AttrDef
 	- $Boot
@@ -62,8 +62,8 @@ show_sys_files
 	- $Volume
 </pre>
 
-streams_interface=windows
-	Privides access to NTFS named data streams. Provides information which was not accessible before like:
+**streams_interface=windows**  
+    Privides access to NTFS named data streams. So we can fetch information which was not accessible before, like:
 <pre>
 	$ cat /Users/<username>/Downloads/Dropbox.exe:Zone.Identifier
 	[ZoneTransfer]
