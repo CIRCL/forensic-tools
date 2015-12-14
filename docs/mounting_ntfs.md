@@ -65,7 +65,7 @@ $ sudo mount -o ro,loop,noexec,offset=$((512*2048)),show_sys_files,streams_inter
 **streams_interface=windows**  
     Privides access to NTFS named data streams. So we can fetch information which was not accessible before, like:
 <pre>
-	$ cat /Users/`<username>`/Downloads/Dropbox.exe:Zone.Identifier
+	$ cat /Users/username/Downloads/Dropbox.exe:Zone.Identifier
 	[ZoneTransfer]
 	ZoneId=3
 </pre>
