@@ -17,6 +17,11 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#Ideas
+#Indent session ids to better see logins and logouts
+#Map color with a session id
+#Compute login and logout durations
+
 import xml.sax
 import sys
 import argparse
