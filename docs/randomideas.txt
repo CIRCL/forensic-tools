@@ -1,0 +1,3 @@
+- Use data from Eventlogs Microsoft-Windows-Application-Experience/Program-Telemetry 
+  to create a time line of which programs were active during a given date with 
+  their  PIDs. Which programs were restarted etc
