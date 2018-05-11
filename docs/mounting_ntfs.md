@@ -29,7 +29,7 @@ A sector has 512 bytes. We can mount the partition. The syntax is: `sudo mount -
 The image should be mounted for forensic investigations. There are some useful options which are explained below. The command to mound should look like:
 
 <pre>
-$ sudo mount -o ro,loop,noexec,offset=$((512*2048)),show_sys_files,streams_interface=windows imagefile.dd /mnt/
+$ sudo mount -o ro,noload,loop,noexec,offset=$((512*2048)),show_sys_files,streams_interface=windows imagefile.dd /mnt/
 </pre>
 
 
@@ -38,6 +38,9 @@ $ sudo mount -o ro,loop,noexec,offset=$((512*2048)),show_sys_files,streams_inter
 
 **ro**  
     Open the image in read only mode to prevent modification of the evidence.
+
+**noload**  
+    Do not load the journal on mounting.
 
 **loop**  
     Mount image as loopback device.
