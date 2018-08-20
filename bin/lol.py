@@ -26,13 +26,14 @@ import os, sys, re, pprint, copy
 
 
 MINWORD = 4                             # Ignore words with less than 4 characters
-numOfHits = 5                           # How many passwords to show
+numOfHits = 4                           # How many passwords to show
 
-PWD = { 'FRENCH' : ['AZERTY', 'ANNIVERSAIRE', 'BRUXELLES', 'MOTDEPASSE', 'SOLEIL', 'LOULOU', 'DOUDOU', 'COUCOU'],
+PWD = { 'FRENCH' : ['AZERTY', 'ANNIVERSAIRE', 'BRUXELLES', 'MOTDEPASSE', 'SOLEIL', 'LOULOU', 'DOUDOU',
+                    'COUCOU', 'JETAIME', 'CHOUCHOU', 'CHOCOLAT'],
         'GERMAN' : ['PASSWORT', 'QWERTZ'],
         'ENGLISH' : ['123456', '1234567', '12345678', 'PASSWORD', 'CANABIS', 'SECRET', 'QWERTY',
                     'ABC123', 'MONKEY', 'ILOVEYOU', 'LETMEIN', 'TRUSTNO'],
-        'NAMES' : ['PIERRE', 'MANUEL', 'CAROLINE', 'LOUIS', 'MICHAEL']}
+        'NAMES' : ['PIERRE', 'MANUEL', 'CAROLINE', 'LOUIS', 'MICHAEL', 'THOMAS', 'SANDRINE', 'NICOLAS']}
 
 
 
@@ -74,6 +75,12 @@ def extractPwd(data,noMostUsed=True):
                     if word in PWD[key] and noMostUsed == True:
                         wordAdding = False
                         break
+
+                    # Rectoverso ignore most used passwords
+                    for pwd in PWD[key]:
+                        if pwd in word and noMostUsed == True:
+                            wordAdding = False
+                            break
 
                 if len(word) >= MINWORD and wordAdding == True:
                     passwords.append(word)
