@@ -3,7 +3,7 @@ Carving for ext3/ext4 directories
 
 
 
-# Motivation
+## Motivation
 
 The on Linux most common file system ext3/ext4 is very consequent in deleting files and directories.
 
@@ -11,7 +11,7 @@ In forensics it could be useful to carve for directories to learn about deleted 
 
 
 
-# Magic Bytes
+## Magic Bytes
 
 Based on the data structure of a directory we could conclude on the quoted sequence of bytes.
 
@@ -30,7 +30,7 @@ the block size with a tool like fsstat and in case adapt the configuration.
 
 
 
-# Details
+## Details
 
 How did I come to this sequence? The 1st entry of a directory is '.' and the 2nd entry is '..'.
 All numbers are represented in little endian.
