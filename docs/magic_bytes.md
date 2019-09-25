@@ -21,12 +21,35 @@ Based on the data structure of a directory we could conclude on the quoted seque
 
 
 It is common that the block size is 8 sectors resulting in 4096 bytes. This leads to the
-quoted configuration line, successfully tested with Foremost and Scalpel. 
+quoted configuration line, successfully tested with Foremost and Scalpel. Please review
+the block size with a tool like fsstat and in case adapt the configuration.
 
 <pre>
        raw      y      4096     ????\x0c\x00\x01\x02.\x00\x00\x00??????\x02\x02..\x00\x00
 </pre>
 
+
+
+# Details
+
+How did I come to this sequence? The 1st entry of a directory is '.' and the 2nd entry is '..'.
+All numbers are represented in little endian.
+
+<pre>
+4 Bytes: The inode of this file unknown:    ????
+2 Bytes: The beginning of the 2nd entry:    x0c x00 --> 12
+1 Byte:  The size of the file name:         x01
+1 Byte:  The type of the file:              x02     --> This is a driectory
+1 Byte:  The file name (Size defined):      .
+3 Bytes: Padding to a 4 byte boundary:      x00 x00 x00
+
+4 Bytes: The inode of this file unknown:    ????
+2 Bytes: Beginning of the next is unknown:  ??      --> Depend if the dir is empty
+1 Byte:  The size of the entry name:        x02
+1 Byte:  The type of the entry:             x02     --> This is a driectory
+2 Byte:  The file name (Size defined):      ..
+2 Bytes: Padding to a 4 byte boundary:      x00 x00
+</pre>
 
 
 
