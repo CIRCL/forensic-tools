@@ -25,7 +25,7 @@ quoted configuration line, successfully tested with Foremost and Scalpel. Please
 the block size with a tool like fsstat and in case adapt the configuration.
 
 <pre>
-       raw      y      4096     ????\x0c\x00\x01\x02.\x00\x00\x00??????\x02\x02..\x00\x00
+       raw      y      4096     ????\x0c\x00\x01\x02.\x00\x00\x00????\x0c\x00\x02\x02..\x00\x00
 </pre>
 
 
@@ -44,7 +44,7 @@ All numbers are represented in little endian.
 3 Bytes: Padding to a 4 byte boundary:      x00 x00 x00
 
 4 Bytes: The inode of this file unknown:    ????
-2 Bytes: Beginning of the next is unknown:  ??      --> Depend if the dir is empty
+2 Bytes: The beginning of the 3rd entry:    x0c x00 --> 12, We ignore empty directories
 1 Byte:  The size of the entry name:        x02
 1 Byte:  The type of the entry:             x02     --> This is a driectory
 2 Byte:  The file name (Size defined):      ..
