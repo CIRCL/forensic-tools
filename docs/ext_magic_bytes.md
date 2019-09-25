@@ -37,16 +37,16 @@ All numbers are represented in little endian.
 
 <pre>
 4 Bytes: The inode of this file unknown:    ????
-2 Bytes: The beginning of the 2nd entry:    x0c x00 --> 12
+2 Bytes: The beginning of the 2nd entry:    x0c x00      --> 12
 1 Byte:  The size of the file name:         x01
-1 Byte:  The type of the file:              x02     --> This is a driectory
+1 Byte:  The type of the file:              x02          --> This is a driectory
 1 Byte:  The file name (Size defined):      .
 3 Bytes: Padding to a 4 byte boundary:      x00 x00 x00
 
 4 Bytes: The inode of this file unknown:    ????
-2 Bytes: The beginning of the 3rd entry:    x0c x00 --> 12, We ignore empty directories
+2 Bytes: The beginning of the 3rd entry:    x0c x00      --> 12, We ignore empty directories
 1 Byte:  The size of the entry name:        x02
-1 Byte:  The type of the entry:             x02     --> This is a driectory
+1 Byte:  The type of the entry:             x02          --> This is a driectory
 2 Byte:  The file name (Size defined):      ..
 2 Bytes: Padding to a 4 byte boundary:      x00 x00
 </pre>
