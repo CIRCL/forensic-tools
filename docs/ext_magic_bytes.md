@@ -32,8 +32,9 @@ the block size with a tool like fsstat and in case adapt the configuration.
 
 ## Details
 
-How did I come to this sequence? The 1st entry of a directory is '.' and the 2nd entry is '..'.
-All numbers are represented in little endian.
+How did I come to this sequence? The ext data structures are very well described in this exceillent book [1].
+The 1st entry of a directory is named '.' and the 2nd entry is named '..'. All numbers are represented in
+little endian.
 
 <pre>
 4 Bytes: The inode of this file unknown:    ????
@@ -52,6 +53,10 @@ All numbers are represented in little endian.
 </pre>
 
 
+
+## References:
+
+[1] File System Forensic Analysis; Brian Carrier; Addison Wesley; 2005; ISBN-13: 978-0321268174;
 
 
 
