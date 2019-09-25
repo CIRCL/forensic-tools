@@ -16,7 +16,7 @@ In forensics it could be useful to carve for directories to learn about deleted 
 Based on the data structure of a directory we could conclude on the quoted sequence of bytes.
 
 <pre>
-????\x0c\x00\x01\x02.\x00\x00\x00??????\x02\x02..\x00\x00
+????\x0c\x00\x01\x02.\x00\x00\x00????\x0c\x00\x02\x02..\x00\x00
 </pre>
 
 
